@@ -17,6 +17,13 @@ public class Main2 {
             e.printStackTrace();
 
         }
+
+        try{
+            System.out.println(clienteDAO.lista());
+        }catch (SQLException e){
+            e.printStackTrace();
+
+        }
     }
 
 }
