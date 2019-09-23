@@ -1,9 +1,6 @@
 package sample.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public class CategoriaDAOimpl implements CategoriasDAO {
@@ -20,6 +17,16 @@ public class CategoriaDAOimpl implements CategoriasDAO {
         stm.setString(1,c.getNome());
         stm.executeUpdate();
 
+        ResultSet rs = stm.getGeneratedKeys();
+        rs.next();
+
+        int id = rs.getInt(1);
+
+        c.setId(id);
+
+        rs.close();
+        stm.close();
+        con.close();
 
     }
 
