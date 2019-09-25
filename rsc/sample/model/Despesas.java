@@ -82,4 +82,8 @@ public Despesas(){}
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
+
+    public double getPaga() {
+        return 0;
+    }
 }

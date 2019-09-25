@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.List;
 
 public class DespesasDAOimpl implements DespesasDAO {
+    private static  String INSERT = "INSERT INTO categorias(nome) VALUES(?)";
+    private static String LISTA = "SELECT * FROM categorias";
+    private static String BUSCA_ID ="SELECT * FROM categorias WHERE id=?";
+
     @Override
     public void insere(Despesas c) throws SQLException {
 
