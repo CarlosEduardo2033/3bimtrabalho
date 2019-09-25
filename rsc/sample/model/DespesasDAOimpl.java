@@ -1,11 +1,33 @@
 package sample.model;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DespesasDAOimpl implements DespesasDAO {
     @Override
     public void insere(Despesas c) throws SQLException {
+
+        Connection con = FabricaConexao.getConnection();
+
+        PreparedStatement stm = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+
+        stm.setString(1,c.getDescricao());
+        stm.setDouble(2,c.getValor());
+        stm.setDouble(3,c.getPaga());
+
+
+        stm.executeUpdate();
+
+        ResultSet rs = stm.getGeneratedKeys();
+        rs.next();
+
+        int id = rs.getInt(1);
+
+        c.setId(id);
+
+        rs.close();
+        stm.close();
+        con.close();
 
     }
 
