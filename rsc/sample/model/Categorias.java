@@ -5,7 +5,8 @@ public class Categorias {
     private int id;
     private String nome;
 
-    public Categorias(){}
+    public Categorias() {
+    }
 
     public int getId() {
         return id;

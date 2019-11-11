@@ -19,7 +19,6 @@ public class DespesasDAOimpl implements DespesasDAO {
         stm.setDouble(2,c.getValor());
         stm.setDouble(3,c.getPaga());
 
-
         stm.executeUpdate();
 
         ResultSet rs = stm.getGeneratedKeys();
@@ -55,4 +54,3 @@ public class DespesasDAOimpl implements DespesasDAO {
 
     }
 }
-

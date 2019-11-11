@@ -6,9 +6,9 @@ import java.util.List;
 
 public class CategoriaDAOimpl implements CategoriasDAO {
 
-    private static  String INSERT = "INSERT INTO categorias(nome) VALUES(?)";
+    private static String INSERT = "INSERT INTO categorias(nome) VALUES(?)";
     private static String LISTA = "SELECT * FROM categorias";
-    private static String BUSCA_ID ="SELECT * FROM categorias WHERE id=?";
+    private static String BUSCA_ID = "SELECT * FROM categorias WHERE id=?";
 
     @Override
     public void insere(Categorias c) throws SQLException {
@@ -17,7 +17,7 @@ public class CategoriaDAOimpl implements CategoriasDAO {
 
         PreparedStatement stm = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 
-        stm.setString(1,c.getNome());
+        stm.setString(1, c.getNome());
         stm.executeUpdate();
 
         ResultSet rs = stm.getGeneratedKeys();
@@ -26,7 +26,6 @@ public class CategoriaDAOimpl implements CategoriasDAO {
         int id = rs.getInt(1);
 
         c.setId(id);
-
         rs.close();
         stm.close();
         con.close();
@@ -37,30 +36,30 @@ public class CategoriaDAOimpl implements CategoriasDAO {
     public Categorias buscaid(int id) throws SQLException {
         Categorias c = null;
 
-            Connection con = FabricaConexao.getConnection();
+        Connection con = FabricaConexao.getConnection();
 
-            PreparedStatement stm = con.prepareStatement(BUSCA_ID);
+        PreparedStatement stm = con.prepareStatement(BUSCA_ID);
 
-            stm.setInt(1,id);
+        stm.setInt(1, id);
 
-            ResultSet rs = stm.executeQuery();
+        ResultSet rs = stm.executeQuery();
 
-            while (rs.next()){
+        while (rs.next()) {
 
-                String nome = rs.getString("Nome");
-                c = new Categorias();
-                c.setId(id);
-                c.setNome(nome);
+            String nome = rs.getString("Nome");
+            c = new Categorias();
+            c.setId(id);
+            c.setNome(nome);
 
-            }
-
-            rs.close();
-            stm.close();
-            con.close();
-
-            return c;
         }
+
+        rs.close();
+        stm.close();
+        con.close();
+
+        return c;
     }
+}
 
     @Override
     public List<Categorias> lista() throws SQLException {
@@ -92,7 +91,6 @@ public class CategoriaDAOimpl implements CategoriasDAO {
 
     @Override
     public void atualizar(Categorias c) throws SQLException {
-
     }
 
     @Override

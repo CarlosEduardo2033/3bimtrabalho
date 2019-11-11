@@ -7,8 +7,10 @@ import java.sql.SQLException;
 public class FabricaConexao {
     private static String NOME_BANCO="banco.sqlite";
 
-    private static String USER ="user";
+    private static String USER="user";
+
     private static String PASSWORD="password";
+
     private static String SERVIDOR="IP_SERVIDOR";
 
     private static String CON_STR_SQLITE="jdbc:sqlite"+NOME_BANCO;
@@ -17,23 +19,18 @@ public class FabricaConexao {
 
     private static String CON_STR="jdbc:sqlite:"+NOME_BANCO;
 
-    private static int MAX_CON=5;
-
+    private static int MAX_CON = 5;
     private static Connection[] connections = new Connection[MAX_CON];
 
-    public Connection getConnection() throws SQLException{
-
+    public static Connection getConnection() throws SQLException{
         for (int i=0; i<MAX_CON; i++) {
             if (connections[i]==null || connections[i].isClosed()){
-                connections[i] = DriverManager.getConnection(CON_STR);
-                return connections[i];
-
+                    connections[i] = DriverManager.getConnection(CON_STR);
+    return connections[i];
             }
         }
-
         throw new SQLException("Muitas Conexões Abertas...!!!");
     }
-
 }
 
 

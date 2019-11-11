@@ -16,7 +16,6 @@ public class Despesas {
     private LocalDateTime realizacao;
     private LocalDateTime dataCadastro;
 
-
 public Despesas(){}
 
     public int getId() {
